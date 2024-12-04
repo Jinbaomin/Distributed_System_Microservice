@@ -1,0 +1,26 @@
+<?php
+
+use App\Http\Controllers\ReviewController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make something great!
+|
+*/
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('books/{book}/reviews', [ReviewController::class, 'index']);
+Route::post('/reviews', [ReviewController::class, 'store']);
+Route::put('review/{review}', [ReviewController::class, 'update']);
+Route::delete('/book/{book}/reviews', [ReviewController::class, 'deleteByBook']);
+Route::delete('review/{review}', [ReviewController::class, 'deleteById']);
